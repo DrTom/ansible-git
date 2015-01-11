@@ -1,0 +1,17 @@
+- stat: path="{{git_dest}}/.git"
+  register: git_dest_git
+
+- shell: cd {{git_dest}} && git remote set-url origin {{git_repo}}
+  changed_when: False
+  when: git_dest_git.stat.isdir is defined and git_dest_git.stat.isdir == true
+
+- git:  repo={{git_repo}}
+        accept_hostkey=yes
+        dest={{git_dest}}
+        version={{git_ref}}
+        update=yes
+        force=yes
+  register: git
+
+#- debug: var=git 
+

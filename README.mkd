@@ -1,0 +1,5 @@
+Ansible Role around the Git module
+---------------------------------
+
+An Ansible role around the ansible git module with sane 
+defaults and some safeguards.   
